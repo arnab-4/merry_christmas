@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Merry Christmas | Amazing 3D Card Rotate On Mousemove</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-bg">
+          <img src="card.jpg" alt="">
+        </div>
+        <div class="title">
+          <h2>Merry</h2>
+          <h1>Christmas</h1>
+          <h3>& Happy New Year</h3>
+        </div>
+        <div class="images">
+          <img src="santa.png" class="santa" alt="">
+          <img src="tree.png" class="tree" alt="">
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    const container = document.querySelector(".container");
+    const card = document.querySelector(".card");
+    const title = document.querySelector(".title");
+    const santa = document.querySelector(".santa");
+    const tree = document.querySelector(".tree");
+
+    //card rotate on mouse move
+    container.addEventListener("mousemove", (rotate) => {
+      let x = (innerWidth / 2 - rotate.pageX) / 15;
+      let y = (innerHeight / 2 - rotate.pageY) / 15;
+
+      card.style.transform = "rotateY(" + x + "deg) rotateX(" + y + "deg)";
+    });
+
+    //card effects on mouse over the card
+    container.addEventListener("mouseover", () => {
+      title.style.transform = "translate3d(0, 0, 160px)";
+      santa.style.transform = "translate3d(0, 0, 220px)";
+      tree.style.transform = "translate3d(0, 0, 120px)";
+      card.style.transition = "all 0.1s ease";
+    });
+
+    //card back to normal when mouse out
+    container.addEventListener("mouseout", () => {
+      card.style.transform = "rotateY(0deg) rotateX(0deg)";
+      card.style.transition = "all 0.5s ease";
+      title.style.transform = "translate3d(0, 0, 0)";
+      santa.style.transform = "translate3d(0, 0, 0)";
+      tree.style.transform = "translate3d(0, 0, 0)";
+    });
+    </script>
+
+  </body>
+</html>
